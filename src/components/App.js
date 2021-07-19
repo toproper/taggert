@@ -1,24 +1,33 @@
-import React, { useState } from "react";
-import data from "../data.json";
+import React, { useEffect, useState, Fragment } from "react";
+import GlobalStyle from "../theme/globalStyles";
+import { getTagList } from "../services/tags";
 import Header from "./Header";
 import TagList from "./TagList";
 import TagForm from "./TagForm";
 
 function App() {
-  const [tagList, setTagList] = useState(data);
+  const [tagList, setTagList] = useState([]);
 
-  const addTag = userInput => {
-    let copy = [...tagList];
-    copy = [...copy, { id: tagList.length + 1, name: userInput }];
-    setTagList(copy);
-  };
+  useEffect(() => {
+    let mounted = true;
+    getTagList().then(items => {
+      if (mounted) {
+        setTagList(items);
+      }
+    });
+    return () => (mounted = false);
+  }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <TagForm addTag={addTag} />
-      <TagList tagList={tagList} />
-    </div>
+    <Fragment>
+      <GlobalStyle />
+      <div className="App">
+        <Header />
+        <TagForm />
+
+        <TagList tagList={tagList} />
+      </div>
+    </Fragment>
   );
 }
 

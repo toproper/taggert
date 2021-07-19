@@ -9,7 +9,7 @@ const StyledTag = styled.li`
 `;
 
 const Tag = ({ tag }) => {
-  return <StyledTag>{tag.name}</StyledTag>;
+  return <StyledTag>{tag.tag}</StyledTag>;
 };
 
 export default Tag;
