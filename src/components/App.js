@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import data from "./../data.json";
+import data from "../data.json";
 import Header from "./Header";
 import TagList from "./TagList";
 import TagForm from "./TagForm";
