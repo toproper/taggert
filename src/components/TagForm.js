@@ -9,7 +9,7 @@ const StyledForm = styled.form`
   margin-bottom: 1rem;
 
   h3 {
-    background: #ffe000;
+    background: #ccc;
     color: #000;
     margin: 0;
     padding: 1rem;
@@ -74,7 +74,7 @@ const TagForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      {alert && <h3> Submit Successful</h3>}
+      {alert && <h3> Tag toegevoegd</h3>}
       <input
         aria-label="Tag name"
         placeholder="Enter new tag name..."
